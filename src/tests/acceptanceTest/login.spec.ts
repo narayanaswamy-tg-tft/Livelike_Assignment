@@ -29,16 +29,15 @@ test.describe("Login Functionality", () => {
   test.beforeEach(async ({ page }) => {
     user = userData.user;
     loginPage = new LoginPage(page);
+    await loginPage.navigateToLoginPage();
   });
 
   test("Login with correct email and password", async ({}) => {
-    await loginPage.navigateToLoginPage();
-    await loginPage.login(user.emailExisting, password);
+    await loginPage.login(user.emailExisting, "1");
     await loginPage.verifyLoginSuccess();
   });
 
   test("Login with incorrect email and password", async ({}) => {
-    await loginPage.navigateToLoginPage();
     await loginPage.login(user.invalidEmail, password);
     await loginPage.verifyLoginFailure();
   });

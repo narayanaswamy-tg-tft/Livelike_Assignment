@@ -29,14 +29,14 @@ test.describe("Signup Functionality", () => {
 
   test.beforeEach(async ({ page }) => {
     user = userData.user;
+    timeStamp = await helper.formatCurrentDateTimeCompact();
     loginPage = new LoginPage(page);
     signupPage = new SignupPage(page);
     await loginPage.navigateToLoginPage();
+    await signupPage.verifySignupPageVisible();
   });
 
   test("Register new user", async ({}) => {
-    timeStamp = await helper.formatCurrentDateTimeCompact();
-    await signupPage.verifySignupPageVisible();
     await signupPage.signup(`NewUser_${timeStamp}`, `newuser_${timeStamp}@example.com`);
     await signupPage.verifyAccountCreationPageVisible();
     await signupPage.fillAccountDetails();
@@ -44,7 +44,6 @@ test.describe("Signup Functionality", () => {
   });
 
   test("Register with existing email", async ({}) => {
-    await signupPage.verifySignupPageVisible();
     await signupPage.signup(user.name, user.emailExisting);
     await signupPage.verifyAccountExistsError();
   });

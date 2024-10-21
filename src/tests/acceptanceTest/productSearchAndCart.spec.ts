@@ -41,7 +41,7 @@ test.describe("Search and Cart Functionality", () => {
     await productPage.verifySearchedProductsVisible(user.searchProduct);
   });
 
-  test.only("Search product and verify cart after login", async ({}) => {
+  test("Search product and verify cart after login", async ({}) => {
     await productPage.navigateToProducts();
     await productPage.verifyAllProductsPageVisible();
     await productPage.searchProduct(user.searchProduct);
