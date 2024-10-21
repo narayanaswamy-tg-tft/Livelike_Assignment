@@ -1,5 +1,7 @@
 name: automationExercise
 on:
+  repository_dispatch:
+    types: [trigger-tests]
   push:
     branches:
       - dev
