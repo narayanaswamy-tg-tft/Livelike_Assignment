@@ -1,119 +1,108 @@
-import { Page, expect } from "@playwright/test";
-import userData from "../utils/data.json";
+import { Locator, Page, expect } from "@playwright/test";
+import { User } from "../utils/helper";
 
 const password = process.env.PASSWORD as string;
 
 export class SignupPage {
-  private signupHeader: string;
-  private signupNameInput: string;
-  private signupEmailInput: string;
-  private signupButton: string;
-  private accountInfoHeader: string;
-  private passwordInput: string;
-  private daysSelect: string;
-  private monthSelect: string;
-  private yearSelect: string;
-  private accountCreatedHeader: string;
-  private continueButton: string;
-  private mrTitle: string;
-  private mrsTitle: string;
-  private nameInputLocator: string;
-  private emailInputLocator: string;
-  private firstNameInputLocator: string;
-  private lastNameInputLocator: string;
-  private companyInputLocator: string;
-  private addressInputLocator: string;
-  private countrySelectLocator: string;
-  private stateInputLocator: string;
-  private cityInputLocator: string;
-  private zipcodeInputLocator: string;
-  private mobileInputLocator: string;
-  private newsLetterLocator: string;
-  private specialOfferLocator: string;
-  private createAccount: string;
-  private signupErrorAlert: string;
+  private signupHeader: Locator;
+  private signupNameInput: Locator;
+  private signupEmailInput: Locator;
+  private signupButton: Locator;
+  private accountInfoHeader: Locator;
+  private passwordInput: Locator;
+  private daysSelect: Locator;
+  private monthSelect: Locator;
+  private yearSelect: Locator;
+  private accountCreatedHeader: Locator;
+  private continueButton: Locator;
+  private mrTitle: Locator;
+  private mrsTitle: Locator;
+  private nameInputLocator: Locator;
+  private emailInputLocator: Locator;
+  private firstNameInputLocator: Locator;
+  private lastNameInputLocator: Locator;
+  private companyInputLocator: Locator;
+  private addressInputLocator: Locator;
+  private countrySelectLocator: Locator;
+  private stateInputLocator: Locator;
+  private cityInputLocator: Locator;
+  private zipcodeInputLocator: Locator;
+  private mobileInputLocator: Locator;
+  private newsLetterLocator: Locator;
+  private specialOfferLocator: Locator;
+  private createAccount: Locator;
+  private signupErrorAlert: Locator;
 
   constructor(private page: Page) {
-    this.signupHeader = 'h2:has-text("New User Signup!")';
-    this.signupNameInput = 'input[data-qa="signup-name"]';
-    this.signupEmailInput = 'input[data-qa="signup-email"]';
-    this.signupButton = 'button[data-qa="signup-button"]';
-    this.accountInfoHeader = 'h2:has-text("Enter Account Information")';
-    this.passwordInput = 'input[data-qa="password"]';
-    this.daysSelect = 'select[data-qa="days"]';
-    this.monthSelect = 'select[data-qa="months"]';
-    this.yearSelect = 'select[data-qa="years"]';
-    this.accountCreatedHeader = 'h2:has-text("Account Created!")';
-    this.continueButton = 'a[data-qa="continue-button"]';
-    this.signupErrorAlert = '//*[contains(text(),"Email Address already exist!")]';
-    this.mrTitle = 'div[id="uniform-id_gender1"]';
-    this.mrsTitle = 'div[id="uniform-id_gender2"]';
-    this.nameInputLocator = 'input[data-qa="name"]';
-    this.emailInputLocator = 'input[id="email"]';
-    this.firstNameInputLocator = 'input[data-qa="first_name"]';
-    this.lastNameInputLocator = 'input[data-qa="last_name"]';
-    this.companyInputLocator = 'input[data-qa="company"]';
-    this.addressInputLocator = 'input[data-qa="address"]';
-    this.countrySelectLocator = 'select[data-qa="country"]';
-    this.stateInputLocator = 'input[data-qa="state"]';
-    this.cityInputLocator = 'input[data-qa="city"]';
-    this.zipcodeInputLocator = 'input[data-qa="zipcode"]';
-    this.mobileInputLocator = 'input[data-qa="mobile_number"]';
-    this.newsLetterLocator = "input#newsletter";
-    this.specialOfferLocator = "input#optin";
-    this.createAccount = 'button[data-qa="create-account"]';
+    this.signupHeader = this.page.locator('h2:has-text("New User Signup!")');
+    this.signupNameInput = this.page.locator('input[data-qa="signup-name"]');
+    this.signupEmailInput = this.page.locator('input[data-qa="signup-email"]');
+    this.signupButton = this.page.locator('button[data-qa="signup-button"]');
+    this.accountInfoHeader = this.page.locator('h2:has-text("Enter Account Information")');
+    this.passwordInput = this.page.locator('input[data-qa="password"]');
+    this.daysSelect = this.page.locator('select[data-qa="days"]');
+    this.monthSelect = this.page.locator('select[data-qa="months"]');
+    this.yearSelect = this.page.locator('select[data-qa="years"]');
+    this.accountCreatedHeader = this.page.locator('h2:has-text("Account Created!")');
+    this.continueButton = this.page.locator('a[data-qa="continue-button"]');
+    this.signupErrorAlert = this.page.locator('//*[contains(text(),"Email Address already exist!")]');
+    this.mrTitle = this.page.locator('div[id="uniform-id_gender1"]');
+    this.mrsTitle = this.page.locator('div[id="uniform-id_gender2"]');
+    this.nameInputLocator = this.page.locator('input[data-qa="name"]');
+    this.emailInputLocator = this.page.locator('input[id="email"]');
+    this.firstNameInputLocator = this.page.locator('input[data-qa="first_name"]');
+    this.lastNameInputLocator = this.page.locator('input[data-qa="last_name"]');
+    this.companyInputLocator = this.page.locator('input[data-qa="company"]');
+    this.addressInputLocator = this.page.locator('input[data-qa="address"]');
+    this.countrySelectLocator = this.page.locator('select[data-qa="country"]');
+    this.stateInputLocator = this.page.locator('input[data-qa="state"]');
+    this.cityInputLocator = this.page.locator('input[data-qa="city"]');
+    this.zipcodeInputLocator = this.page.locator('input[data-qa="zipcode"]');
+    this.mobileInputLocator = this.page.locator('input[data-qa="mobile_number"]');
+    this.newsLetterLocator = this.page.locator("input#newsletter");
+    this.specialOfferLocator = this.page.locator("input#optin");
+    this.createAccount = this.page.locator('button[data-qa="create-account"]');
   }
 
   async verifySignupPageVisible() {
-    await expect(this.page.locator(this.signupHeader)).toBeVisible();
+    await expect(this.signupHeader).toBeVisible();
   }
 
   async signup(name: string, email: string) {
-    try {
-      await this.page.fill(this.signupNameInput, name);
-      await this.page.fill(this.signupEmailInput, email);
-      await this.page.click(this.signupButton);
-    } catch (error) {
-      console.error(`Error during signup with name: ${name}, email: ${email}`, error);
-      throw error;
-    }
+    await this.signupNameInput.fill(name);
+    await this.signupEmailInput.fill(email);
+    await this.signupButton.click();
   }
 
   async verifyAccountCreationPageVisible() {
-    try {
-      await expect(this.page.locator(this.accountInfoHeader)).toBeVisible();
-    } catch (error) {
-      console.error("Error verifying account creation page visibility: ", error);
-      throw error;
-    }
+    await expect(this.accountInfoHeader).toBeVisible();
   }
 
-  async fillAccountDetails() {
+  async fillAccountDetails(user: User) {
     try {
-      const user = userData.user;
       if (user.title === "Mr") {
-        await this.page.check(this.mrTitle);
+        await this.mrTitle.check();
       } else {
-        await this.page.check(this.mrsTitle);
+        await this.mrsTitle.check();
       }
-      await this.page.fill(this.nameInputLocator, user.name);
-      await expect(this.page.locator(this.emailInputLocator)).toBeDisabled();
-      await this.page.fill(this.passwordInput, password);
-      await this.page.selectOption(this.daysSelect, user.date);
-      await this.page.selectOption(this.monthSelect, user.month);
-      await this.page.selectOption(this.yearSelect, user.year);
-      await this.page.check(this.newsLetterLocator);
-      await this.page.check(this.specialOfferLocator);
-      await this.page.fill(this.firstNameInputLocator, user.firstName);
-      await this.page.fill(this.lastNameInputLocator, user.lastName);
-      await this.page.fill(this.companyInputLocator, user.company);
-      await this.page.fill(this.addressInputLocator, user.address);
-      await this.page.selectOption(this.countrySelectLocator, user.country);
-      await this.page.fill(this.stateInputLocator, user.state);
-      await this.page.fill(this.cityInputLocator, user.city);
-      await this.page.fill(this.zipcodeInputLocator, user.zipcode);
-      await this.page.fill(this.mobileInputLocator, user.mobileNumber);
-      await this.page.click(this.createAccount);
+      await this.nameInputLocator.fill(user.name);
+      await expect(this.emailInputLocator).toBeDisabled();
+      await this.passwordInput.fill(password);
+      await this.daysSelect.selectOption(user.date);
+      await this.monthSelect.selectOption(user.month);
+      await this.yearSelect.selectOption(user.year);
+      await this.newsLetterLocator.check();
+      await this.specialOfferLocator.check();
+      await this.firstNameInputLocator.fill(user.firstName);
+      await this.lastNameInputLocator.fill(user.lastName);
+      await this.companyInputLocator.fill(user.company);
+      await this.addressInputLocator.fill(user.address);
+      await this.countrySelectLocator.selectOption(user.country);
+      await this.stateInputLocator.fill(user.state);
+      await this.cityInputLocator.fill(user.city);
+      await this.zipcodeInputLocator.fill(user.zipcode);
+      await this.mobileInputLocator.fill(user.mobileNumber);
+      await this.createAccount.click();
     } catch (error) {
       console.error("Error while filling account details: ", error);
       throw error;
@@ -121,21 +110,11 @@ export class SignupPage {
   }
 
   async verifyAccountCreated() {
-    try {
-      await expect(this.page.locator(this.accountCreatedHeader)).toBeVisible();
-      await this.page.click(this.continueButton);
-    } catch (error) {
-      console.error("Error verifying account creation: ", error);
-      throw error;
-    }
+    await expect(this.accountCreatedHeader).toBeVisible();
+    await this.continueButton.click();
   }
 
   async verifyAccountExistsError() {
-    try {
-      await expect(this.page.locator(this.signupErrorAlert)).toBeVisible();
-    } catch (error) {
-      console.error("Error verifying account exists error message: ", error);
-      throw error;
-    }
+    await expect(this.signupErrorAlert).toBeVisible();
   }
 }

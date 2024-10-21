@@ -27,6 +27,8 @@ export default [
       sourceType: "module",
     },
 
-    rules: {},
+    rules: {
+      'no-console': 'warn',
+    },
   },
 ];

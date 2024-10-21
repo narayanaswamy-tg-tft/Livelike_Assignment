@@ -1,3 +1,25 @@
+export interface User {
+  name: string;
+  emailExisting: string;
+  title: string;
+  invalidEmail: string;
+  password: string;
+  date: string;
+  month: string;
+  year: string;
+  firstName: string;
+  lastName: string;
+  company: string;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  zipcode: string;
+  mobileNumber: string;
+  searchProduct: string;
+  productCartValue: number;
+}
+
 class Utils {
   async formatCurrentDateTimeCompact() {
     const now = new Date();

@@ -17,6 +17,7 @@
     "country": "India",
     "zipcode": "12345",
     "mobileNumber": "1234567890",
-    "searchProduct": "Jeans"
+    "searchProduct": "Jeans",
+    "productCartValue": 3
   }
 }
