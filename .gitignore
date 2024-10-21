@@ -1,0 +1,7 @@
+node_modules/
+/test-results/
+/allure-report
+/allure-results
+/playwright/.cache/
+.env
+package-lock.json

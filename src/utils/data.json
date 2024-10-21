@@ -1,0 +1,22 @@
+{
+  "user": {
+    "title": "Mr",
+    "name": "Test User",
+    "emailExisting": "test_ns1@gmail.com",
+    "invalidEmail": "incorrectemail@example.com",
+    "password": "password123",
+    "date": "10",
+    "month": "2",
+    "year": "2000",
+    "firstName": "Test",
+    "lastName": "User",
+    "company": "Test Company",
+    "address": "123 Test St",
+    "city": "Test City",
+    "state": "Test State",
+    "country": "India",
+    "zipcode": "12345",
+    "mobileNumber": "1234567890",
+    "searchProduct": "Jeans"
+  }
+}

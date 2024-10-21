@@ -1,0 +1,24 @@
+{
+  "name": "livelike-qa_automationassignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test --project=chromium",
+    "report": "allure generate --single-file allure-results --clean",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.6",
+    "allure-playwright": "^3.0.5",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
