@@ -69,8 +69,8 @@ The CI configuration is located in `.github/workflows/ci-pipeline.yml`. It perfo
     - Select the workflow run, and download the allure-report artifact from the Artifacts section.
     - Extract the downloaded file if necessary.
     - Serve the allure-report directory locally using a local HTTP server:
-      # cd path/to/allure-report
-      # npx http-server
+          cd path/to/allure-report
+          npx http-server
     - Open http://localhost:8000 (or http://localhost:8080 for Node.js) in your browser.
 
 ## Folder Structure
@@ -91,6 +91,7 @@ The CI configuration is located in `.github/workflows/ci-pipeline.yml`. It perfo
 ├── package.json
 └── README.md
 ```
+
 - Pre-commit Hooks
   This project uses pre-commit hooks to ensure code quality by automatically running checks before any commit. The hooks include formatting with Prettier and linting with ESLint.
 

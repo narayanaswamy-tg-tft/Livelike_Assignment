@@ -18,6 +18,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+      # Step to cache Node.js modules to speed up subsequent builds
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+            path: node_modules
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
       # Step to install the project dependencies
       - name: Install dependencies
         run: npm install
