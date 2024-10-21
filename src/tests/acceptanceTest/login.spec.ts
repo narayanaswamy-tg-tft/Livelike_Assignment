@@ -33,7 +33,7 @@ test.describe("Login Functionality", () => {
   });
 
   test("Login with correct email and password", async ({}) => {
-    await loginPage.login(user.emailExisting, "1");
+    await loginPage.login(user.emailExisting, password);
     await loginPage.verifyLoginSuccess();
   });
 
