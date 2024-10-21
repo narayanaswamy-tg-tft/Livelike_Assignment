@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../pages/loginPage";
 import { SignupPage } from "../../pages/signupPage";
 import { helper } from "../../utils/helper";
@@ -17,18 +17,18 @@ test.describe("Signup Functionality", () => {
     loginPage = new LoginPage(page);
     signupPage = new SignupPage(page);
     await loginPage.navigateToLoginPage();
-    await signupPage.verifySignupPageVisible();
+    await expect(signupPage.signupHeader).toBeVisible();
   });
 
   test("Register new user", async ({}) => {
     await signupPage.signup(`NewUser_${timeStamp}`, `newuser_${timeStamp}@example.com`);
-    await signupPage.verifyAccountCreationPageVisible();
+    await expect(signupPage.accountInfoHeader).toBeVisible();
     await signupPage.fillAccountDetails(user);
     await signupPage.verifyAccountCreated();
   });
 
   test("Register with existing email", async ({}) => {
     await signupPage.signup(user.name, user.emailExisting);
-    await signupPage.verifyAccountExistsError();
+    await expect(signupPage.signupErrorAlert).toBeVisible();
   });
 });

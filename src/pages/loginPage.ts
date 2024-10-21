@@ -2,24 +2,26 @@ import { Locator, Page, expect } from "@playwright/test";
 import config from "../../config/config.json";
 
 export class LoginPage {
-  private loginOrSignupButton: Locator;
-  private emailPlaceholder: Locator;
-  private passwordPlaceholder: Locator;
-  private loginButton: Locator;
-  private loginToAccount: Locator;
-  private logout: Locator;
-  private loginErrorMessage: Locator;
-  private websiteError: Locator;
+  page: Page;
+  loginOrSignupButton: Locator;
+  emailPlaceholder: Locator;
+  passwordPlaceholder: Locator;
+  loginButton: Locator;
+  loginToAccount: Locator;
+  logout: Locator;
+  loginErrorMessage: Locator;
+  websiteError: Locator;
 
-  constructor(private page: Page) {
-    this.loginOrSignupButton = this.page.locator('//a[contains(text(),"Signup / Login")]');
-    this.emailPlaceholder = this.page.locator('input[data-qa="login-email"]');
-    this.passwordPlaceholder = this.page.locator('input[data-qa="login-password"]');
-    this.loginButton = this.page.locator('button[data-qa="login-button"]');
-    this.loginToAccount = this.page.locator('h2:has-text("Login to your account")');
-    this.logout = this.page.locator('a[href="/logout"]');
-    this.loginErrorMessage = this.page.locator('//*[contains(text(),"Your email or password is incorrect!")]');
-    this.websiteError = this.page.locator('h2:has-text("This website is under heavy load")');
+  constructor(page: Page) {
+    this.page = page;
+    this.loginOrSignupButton = page.locator('//a[contains(text(),"Signup / Login")]');
+    this.emailPlaceholder = page.locator('input[data-qa="login-email"]');
+    this.passwordPlaceholder = page.locator('input[data-qa="login-password"]');
+    this.loginButton = page.locator('button[data-qa="login-button"]');
+    this.loginToAccount = page.locator('h2:has-text("Login to your account")');
+    this.logout = page.locator('a[href="/logout"]');
+    this.loginErrorMessage = page.locator('//*[contains(text(),"Your email or password is incorrect!")]');
+    this.websiteError = page.locator('h2:has-text("This website is under heavy load")');
   }
 
   async navigateToLoginPage() {
@@ -47,13 +49,5 @@ export class LoginPage {
     await this.emailPlaceholder.fill(email);
     await this.passwordPlaceholder.fill(password);
     await this.loginButton.click();
-  }
-
-  async verifyLoginSuccess() {
-    await expect(this.logout).toBeVisible();
-  }
-
-  async verifyLoginFailure() {
-    await expect(this.loginErrorMessage).toBeVisible();
   }
 }

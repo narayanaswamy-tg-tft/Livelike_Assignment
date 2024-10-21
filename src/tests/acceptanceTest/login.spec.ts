@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../pages/loginPage";
 import userData from "../../../config/data.json";
 import { User } from "../../utils/helper";
@@ -17,11 +17,11 @@ test.describe("Login Functionality", () => {
 
   test("Login with correct email and password", async ({}) => {
     await loginPage.login(user.emailExisting, password);
-    await loginPage.verifyLoginSuccess();
+    await expect(loginPage.logout).toBeVisible();
   });
 
   test("Login with incorrect email and password", async ({}) => {
     await loginPage.login(user.invalidEmail, password);
-    await loginPage.verifyLoginFailure();
+    await expect(loginPage.loginErrorMessage).toBeVisible();
   });
 });
