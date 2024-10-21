@@ -55,8 +55,8 @@ export class ProductPage {
     await this.viewCartLinkLocator.click();
     await expect(this.cartInfoLocator).toBeVisible();
     const cartProducts = await this.cartItemsLocator.allTextContents();
-    const lowerCaseCartProducts = cartProducts.map(product => product.trim().toLowerCase());
-    const containsSubstring = lowerCaseCartProducts.some(product => product.includes(productName.toLowerCase()));
+    const lowerCaseCartProducts = cartProducts.map((product) => product.trim().toLowerCase());
+    const containsSubstring = lowerCaseCartProducts.some((product) => product.includes(productName.toLowerCase()));
     expect(containsSubstring).toBe(true);
   }
 }

@@ -73,29 +73,29 @@ export class SignupPage {
   }
 
   async fillAccountDetails(user: User) {
-      if (user.title === "Mr") {
-        await this.mrTitle.check();
-      } else {
-        await this.mrsTitle.check();
-      }
-      await this.nameInputLocator.fill(user.name);
-      await expect(this.emailInputLocator).toBeDisabled();
-      await this.passwordInput.fill(password);
-      await this.daysSelect.selectOption(user.date);
-      await this.monthSelect.selectOption(user.month);
-      await this.yearSelect.selectOption(user.year);
-      await this.newsLetterLocator.check();
-      await this.specialOfferLocator.check();
-      await this.firstNameInputLocator.fill(user.firstName);
-      await this.lastNameInputLocator.fill(user.lastName);
-      await this.companyInputLocator.fill(user.company);
-      await this.addressInputLocator.fill(user.address);
-      await this.countrySelectLocator.selectOption(user.country);
-      await this.stateInputLocator.fill(user.state);
-      await this.cityInputLocator.fill(user.city);
-      await this.zipcodeInputLocator.fill(user.zipcode);
-      await this.mobileInputLocator.fill(user.mobileNumber);
-      await this.createAccount.click();
+    if (user.title === "Mr") {
+      await this.mrTitle.check();
+    } else {
+      await this.mrsTitle.check();
+    }
+    await this.nameInputLocator.fill(user.name);
+    await expect(this.emailInputLocator).toBeDisabled();
+    await this.passwordInput.fill(password);
+    await this.daysSelect.selectOption(user.date);
+    await this.monthSelect.selectOption(user.month);
+    await this.yearSelect.selectOption(user.year);
+    await this.newsLetterLocator.check();
+    await this.specialOfferLocator.check();
+    await this.firstNameInputLocator.fill(user.firstName);
+    await this.lastNameInputLocator.fill(user.lastName);
+    await this.companyInputLocator.fill(user.company);
+    await this.addressInputLocator.fill(user.address);
+    await this.countrySelectLocator.selectOption(user.country);
+    await this.stateInputLocator.fill(user.state);
+    await this.cityInputLocator.fill(user.city);
+    await this.zipcodeInputLocator.fill(user.zipcode);
+    await this.mobileInputLocator.fill(user.mobileNumber);
+    await this.createAccount.click();
   }
 
   async verifyAccountCreated() {
