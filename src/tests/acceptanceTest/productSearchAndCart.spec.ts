@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../pages/loginPage";
 import { ProductPage } from "../../pages/productPage";
 import userData from "../../../config/data.json";
@@ -18,17 +18,17 @@ test.describe("Search and Cart Functionality", () => {
 
   test("Search for a product", async ({}) => {
     await productPage.navigateToProducts();
-    await productPage.verifyAllProductsPageVisible();
+    await expect(productPage.allProductsHeadingLocator).toBeVisible();
     await productPage.searchProduct(user.searchProduct);
     await productPage.verifySearchedProductsVisible(user.searchProduct);
   });
 
   test("Search product and verify cart after login", async ({}) => {
     await productPage.navigateToProducts();
-    await productPage.verifyAllProductsPageVisible();
+    await expect(productPage.allProductsHeadingLocator).toBeVisible();
     await productPage.searchProduct(user.searchProduct);
     await productPage.verifySearchedProductsVisible(user.searchProduct);
     await productPage.addThirdLastProductToCart(user.productCartValue);
-    await productPage.verifyProductInCart();
+    await productPage.verifyProductInCart(user.searchProduct);
   });
 });

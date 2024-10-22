@@ -65,13 +65,13 @@ The CI configuration is located in `.github/workflows/ci-pipeline.yml`. It perfo
 - Installs dependencies
 - Runs tests
 - Downloading and Viewing the Allure Report:
-    - Go to the Actions tab in your GitHub repository.
-    - Select the workflow run, and download the allure-report artifact from the Artifacts section.
-    - Extract the downloaded file if necessary.
-    - Serve the allure-report directory locally using a local HTTP server:
-          cd path/to/allure-report
-          npx http-server
-    - Open http://localhost:8000 (or http://localhost:8080 for Node.js) in your browser.
+  - Go to the Actions tab in your GitHub repository.
+  - Select the workflow run, and download the allure-report artifact from the Artifacts section.
+  - Extract the downloaded file if necessary.
+  - Serve the allure-report directory locally using a local HTTP server:
+    cd path/to/allure-report
+    npx http-server
+  - Open http://localhost:8000 (or http://localhost:8080 for Node.js) in your browser.
 
 ## Folder Structure
 
